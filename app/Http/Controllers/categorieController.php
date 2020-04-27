@@ -9,6 +9,8 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\course;
+use Illuminate\Support\Facades\DB;
 
 class categorieController extends AppBaseController
 {
@@ -79,8 +81,9 @@ class categorieController extends AppBaseController
 
             return redirect(route('categories.index'));
         }
-
-        return view('categories.show')->with('categorie', $categorie);
+        DB::table('categories')->where('id', $id)->increment('view_count');
+        $courses = course::where('categorie_id', $categorie->id)->get();
+        return view('categories.show')->with('categorie', $categorie)->with('courses', $courses);
     }
 
     /**

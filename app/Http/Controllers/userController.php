@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Facades\DB;
 
 class userController extends AppBaseController
 {
@@ -79,7 +80,7 @@ class userController extends AppBaseController
 
             return redirect(route('users.index'));
         }
-
+        DB::table('users')->where('id', $id)->increment('view_count');
         return view('users.show')->with('user', $user);
     }
 

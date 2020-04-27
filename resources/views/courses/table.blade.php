@@ -2,14 +2,13 @@
     <table class="table" id="courses-table">
         <thead>
             <tr>
-                <th>User Id</th>
-        <th>Categorie Id</th>
-        <th>Title</th>
+
+
         <th>Description</th>
-        <th>About Instructor</th>
+
         <th>Dscount Price</th>
         <th>Actual Price</th>
-        <th>Playlist Url</th>
+
         <th>View Count</th>
         <th>Subscriber Count</th>
         <th>Status</th>
@@ -20,18 +19,20 @@
         <tbody>
         @foreach($courses as $course)
             <tr>
-                <td>{{ $course->user_id }}</td>
-            <td>{{ $course->categorie_id }}</td>
-            <td>{{ $course->title }}</td>
-            <td>{{ $course->description }}</td>
-            <td>{{ $course->about_instructor }}</td>
+
+
+            <td>
+                <h2>{{ $course->title }}</h2>
+                {{ $course->photo }}
+                {{ $course->description }}</td>
+
             <td>{{ $course->dscount_price }}</td>
             <td>{{ $course->actual_price }}</td>
-            <td>{{ $course->playlist_url }}</td>
+
             <td>{{ $course->view_count }}</td>
             <td>{{ $course->subscriber_count }}</td>
             <td>{{ $course->status }}</td>
-            <td>{{ $course->photo }}</td>
+            <td></td>
                 <td>
                     {!! Form::open(['route' => ['courses.destroy', $course->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
